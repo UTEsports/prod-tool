@@ -2907,19 +2907,6 @@ line-height: 1;
     font-style: normal;
 }
 
-@font-face {
-    font-family: 'DrukWide';
-    src: url('assets/fonts/DrukFonts/DrukWide-Bold-Trial.otf') format('opentype');
-    font-weight: bold;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'DrukWide';
-    src: url('assets/fonts/DrukFonts/DrukWide-Super-Trial.otf') format('opentype');
-    font-weight: super;
-    font-style: normal;
-}
 
 .font-druk-bold  {
     font-family: 'DrukWide';
@@ -2936,28 +2923,28 @@ line-height: 1;
 /* Built Tilting font styles */
 .font-built-bold {
     text-transform: uppercase;
-    font-family: 'DrukWide';
+    font-family: 'BuiltTilting';
     font-weight: bold;
     font-style: normal;
 }
 
 .font-built-bolder {
   text-transform: uppercase;
-    font-family: 'DrukWide';
+    font-family: 'BuiltTilting';
     font-weight: super;
     font-style: normal;
 }
 
 .font-built-regular {
   text-transform: uppercase;
-    font-family: 'DrukWide';
+    font-family: 'BuiltTilting';
     font-weight: normal;
     font-style: normal;
 }
 
 .font-built-light {
   text-transform: uppercase;
-    font-family: 'DrukWide';
+    font-family: 'BuiltTilting';
     font-weight: lighter;
     font-style: normal;
 }
@@ -2965,21 +2952,21 @@ line-height: 1;
 /* Integral CF font styles */
 .font-integral-bolder {
   text-transform: uppercase;
-    font-family: 'DrukWide';
+    font-family: 'IntegralCF';
     font-weight: super;
     font-style: normal;
 }
 
 .font-integral-bold {
   text-transform: uppercase;
-    font-family: 'DrukWide';
+    font-family: 'IntegralCF';
     font-weight: bold;
     font-style: normal;
 }
 
 .font-integral-regular {
   text-transform: uppercase;
-    font-family: 'DrukWide';
+    font-family: 'IntegralCF';
     font-weight: normal;
     font-style: normal;
 }

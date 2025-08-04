@@ -58,6 +58,7 @@
         // Retrieve form data from localStorage
         function retrieveHeroes() {
           var curmatch = localStorage.getItem("curr-match");
+          console.log("Current Match: " + curmatch);
           var hero1 = localStorage
             .getItem(`m${curmatch}-p1-character`)
             .replace(/\s+/g, "_");
