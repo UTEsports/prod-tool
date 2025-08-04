@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../style.css" rel="stylesheet" />
+  </head>
+  <body class="font-integral-bold" style="overflow: hidden">
+    <!-- Container for stacking -->
+    <div class="stack-container text-center">
+      <img class="roster-logo" id="t1rosterlogo" />
+      <div class="roster-team uppercase" id="roster-team-2"></div>
+      <img
+        class="stacked-image"
+        src="..\assets\roster\roster_box_redteam6.png"
+      />
+      <div class="flex flex-row roles6">
+        <img id="role1" />
+        <img id="role2" />
+        <img id="role3" />
+        <img id="role4" />
+        <img id="role5" />
+        <img id="role6" />
+      </div>
+
+      <div class="font-integral-bold">
+        <img id="roster6-img-1" />
+        <div id="roster6-name-1" style="color: white"></div>
+      </div>
+
+      <div class="font-integral-bold">
+        <img id="roster6-img-2" />
+        <div id="roster6-name-2" style="color: white"></div>
+      </div>
+
+      <div class="font-integral-bold">
+        <img id="roster6-img-3" />
+        <div id="roster6-name-3" style="color: white"></div>
+      </div>
+
+      <div class="font-integral-bold">
+        <img id="roster6-img-4" />
+        <div id="roster6-name-4" style="color: white"></div>
+      </div>
+
+      <div class="font-integral-bold">
+        <img id="roster6-img-5" />
+        <div id="roster6-name-5" style="color: white"></div>
+      </div>
+
+      <div class="font-integral-bold">
+        <img id="roster6-img-6" />
+        <div id="roster6-name-6" style="color: white"></div>
+      </div>
+
+      <script>
+        retrieveHeroes();
+        // Retrieve form data from localStorage
+        function retrieveHeroes() {
+          var curmatch = localStorage.getItem("curr-match");
+          var hero1 = localStorage
+            .getItem(`m${curmatch}-p6-character`)
+            .replace(/\s+/g, "_");
+          var hero2 = localStorage
+            .getItem(`m${curmatch}-p7-character`)
+            .replace(/\s+/g, "_");
+          var hero3 = localStorage
+            .getItem(`m${curmatch}-p8-character`)
+            .replace(/\s+/g, "_");
+          var hero4 = localStorage
+            .getItem(`m${curmatch}-p9-character`)
+            .replace(/\s+/g, "_");
+          var hero5 = localStorage
+            .getItem(`m${curmatch}-p10-character`)
+            .replace(/\s+/g, "_");
+          var hero6 = localStorage
+            .getItem(`m${curmatch}-p12-character`)
+            .replace(/\s+/g, "_");
+
+          console.log(hero1);
+          var role1 = localStorage.getItem(`m${curmatch}-p6-role`);
+          var role2 = localStorage.getItem(`m${curmatch}-p7-role`);
+          var role3 = localStorage.getItem(`m${curmatch}-p8-role`);
+          var role4 = localStorage.getItem(`m${curmatch}-p9-role`);
+          var role5 = localStorage.getItem(`m${curmatch}-p10-role`);
+          var role6 = localStorage.getItem(`m${curmatch}-p12-role`);
+
+          var name1 = localStorage.getItem(`m${curmatch}-p6-name`);
+          var name2 = localStorage.getItem(`m${curmatch}-p7-name`);
+          var name3 = localStorage.getItem(`m${curmatch}-p8-name`);
+          var name4 = localStorage.getItem(`m${curmatch}-p9-name`);
+          var name5 = localStorage.getItem(`m${curmatch}-p10-name`);
+          var name6 = localStorage.getItem(`m${curmatch}-p12-name`);
+
+          var t1logo = localStorage.getItem(`m${curmatch}-team2-logo`);
+          var logo = document.getElementById("t1rosterlogo");
+          logo.src = t1logo;
+
+          var t1name = localStorage.getItem(`m${curmatch}-team2-name`);
+          var t1div = document.getElementById("roster-team-2");
+          t1div.innerHTML = t1name;
+
+          var h1 = document.getElementById("roster6-img-1");
+          var h2 = document.getElementById("roster6-img-2");
+          var h3 = document.getElementById("roster6-img-3");
+          var h4 = document.getElementById("roster6-img-4");
+          var h5 = document.getElementById("roster6-img-5");
+          var h6 = document.getElementById("roster6-img-6");
+
+          var i1 = document.getElementById("role1");
+          var i2 = document.getElementById("role2");
+          var i3 = document.getElementById("role3");
+          var i4 = document.getElementById("role4");
+          var i5 = document.getElementById("role5");
+          var i6 = document.getElementById("role6");
+
+          if (localStorage.getItem("game") == "mr") {
+            hero1 = hero1;
+            hero2 = hero2;
+            hero3 = hero3;
+            hero4 = hero4;
+            hero5 = hero5;
+            hero6 = hero6;
+            console.log(hero1);
+            var path = "..\\assets\\mr_heroes\\Rivals_Hero_";
+            var iconpath = "..\\assets\\roster\\icons\\mr\\";
+          }
+
+          h1.src = path + hero1 + ".png";
+          h2.src = path + hero2 + ".png";
+          h3.src = path + hero3 + ".png";
+          h4.src = path + hero4 + ".png";
+          h5.src = path + hero5 + ".png";
+          h6.src = path + hero6 + ".png";
+
+          i1.src = iconpath + role1.toLowerCase() + ".png";
+          i2.src = iconpath + role2.toLowerCase() + ".png";
+          i3.src = iconpath + role3.toLowerCase() + ".png";
+          i4.src = iconpath + role4.toLowerCase() + ".png";
+          i5.src = iconpath + role5.toLowerCase() + ".png";
+          i6.src = iconpath + role6.toLowerCase() + ".png";
+
+          var n1 = document.getElementById("roster6-name-1");
+          n1.innerHTML = name1;
+
+          var n2 = document.getElementById("roster6-name-2");
+          n2.innerHTML = name2;
+
+          var n3 = document.getElementById("roster6-name-3");
+          n3.innerHTML = name3;
+
+          var n4 = document.getElementById("roster6-name-4");
+          n4.innerHTML = name4;
+
+          var n5 = document.getElementById("roster6-name-5");
+          n5.innerHTML = name5;
+
+          var n6 = document.getElementById("roster6-name-6");
+          n6.innerHTML = name6;
+        }
+        setInterval(function () {
+          retrieveHeroes();
+        }, 1 * 1000);
+      </script>
+    </div>
+  </body>
+</html>

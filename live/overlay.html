@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="../style.css" rel="stylesheet" />
   </head>
   <body>
@@ -32,7 +31,11 @@
         <img class="overlay-logo" id="overlay-logo-2" />
         <img class="stacked-image" id="game-overlay" style="z-index: 0" />
         <div id="overlay-format" class="font-integral-bold capitalize"></div>
-        <div id="overlay-title" class="font-integral-bold capitalize"></div>
+        <div
+          id="overlay-title"
+          class="font-integral-bold capitalize"
+          style="margin-top: 4px"
+        ></div>
         <div id="mr-bo5" style="display: none; z-index: 10">
           <div id="mr1" class="mr_square"></div>
           <div id="mr2" class="mr_square"></div>
@@ -368,8 +371,8 @@
         "bo3-mapset",
         "bo5-mapset",
       ]);
-      document.getElementById("bo3-mapset").classList.add("rivals-bo3-mapset");
-      document.getElementById("bo5-mapset").classList.add("rivals-bo5-mapset");
+      document.getElementById("bo3-mapset").classList.add("hidden");
+      document.getElementById("bo5-mapset").classList.add("hidden");
       var curmatch = localStorage.getItem("curr-match");
       document.getElementById("game-overlay").src =
         "..\\assets\\in_game_overlay\\ingame_rivals_main.png";
@@ -381,9 +384,6 @@
       document
         .getElementById("overlay-name-2")
         .classList.add("rivals-overlay-name-2");
-      document
-        .getElementById("overlay-title")
-        .classList.add("rivals-overlay-title");
       document
         .getElementById("overlay-logo-1")
         .classList.add("rivals-overlay-logo1");
