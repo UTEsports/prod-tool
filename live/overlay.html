@@ -84,7 +84,7 @@
           <div id="p_6" class="val_p"></div>
         </div>
 
-        <div id="val-bo3">
+        <div id="val-bo3" style="display: none">
           <div id="p_7" class="val_p" style="left: 890px"></div>
 
           <div id="p_8" class="val_p" style="top: 110px; left: 908px"></div>
@@ -137,10 +137,26 @@
     </div>
   </body>
   <script>
+    // Store the current game on page load
+    let currentGame = localStorage.getItem("game");
+
     getScore();
 
+    function checkForGameChange() {
+      const newGame = localStorage.getItem("game");
+      if (newGame !== currentGame) {
+        console.log(
+          "Game changed from",
+          currentGame,
+          "to",
+          newGame,
+          "- reloading page"
+        );
+        location.reload();
+      }
+    }
+
     function getScore() {
-      setOWOverlay();
       var curmatch = localStorage.getItem("curr-match");
       console.log("curmatch:", curmatch);
 
@@ -189,6 +205,57 @@
     function removeAllClasses(elementIds) {
       elementIds.forEach((id) => {
         document.getElementById(id).className = "";
+      });
+    }
+
+    function clearAllScoreDisplays() {
+      // Hide all score box containers
+      document.getElementById("mr-bo5").style.display = "none";
+      document.getElementById("mr-bo3").style.display = "none";
+      document.getElementById("lol-bo5").style.display = "none";
+      document.getElementById("lol-bo3").style.display = "none";
+      document.getElementById("val-bo5").style.display = "none";
+      document.getElementById("val-bo3").style.display = "none";
+
+      // Reset all score box colors to default (black)
+      const allScoreBoxes = [
+        "mr1",
+        "mr2",
+        "mr3",
+        "mr4",
+        "mr5",
+        "mr6",
+        "mr7",
+        "mr8",
+        "mr9",
+        "mr10",
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6",
+        "s7",
+        "s8",
+        "s9",
+        "s10",
+        "p_1",
+        "p_2",
+        "p_3",
+        "p_4",
+        "p_5",
+        "p_6",
+        "p_7",
+        "p_8",
+        "p_9",
+        "p_10",
+      ];
+
+      allScoreBoxes.forEach((id) => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.style.backgroundColor = "black";
+        }
       });
     }
     function setLoLScore() {
@@ -264,6 +331,7 @@
       }
     }
     function setLoLOverlay() {
+      clearAllScoreDisplays(); // Clear all score displays first
       removeAllClasses([
         "overlay-score-1",
         "overlay-score-2",
@@ -303,6 +371,7 @@
     }
 
     function setOWOverlay() {
+      clearAllScoreDisplays(); // Clear all score displays first
       var curmatch = localStorage.getItem("curr-match");
       var format = localStorage.getItem(`match${curmatch}-format`);
       console.log("format:", format);
@@ -358,6 +427,7 @@
     }
 
     function setRivalsOverlay() {
+      clearAllScoreDisplays(); // Clear all score displays first
       document.getElementById("overlay-format").innerHTML = "";
       removeAllClasses([
         "overlay-score-1",
@@ -462,6 +532,7 @@
     }
 
     function setVALOverlay() {
+      clearAllScoreDisplays(); // Clear all score displays first
       document.getElementById("overlay-format").innerHTML = "";
       removeAllClasses([
         "overlay-score-1",
@@ -904,6 +975,7 @@
       }
     }
     setInterval(function () {
+      checkForGameChange(); // Check if game changed first
       getScore();
     }, 1 * 1000);
   </script>
