@@ -635,6 +635,18 @@
           </div>
           <div
             class=""
+            onmousedown="event.preventDefault(); toggleOverlay('wuyang', event.button)"
+          >
+            <img src="../assets/ow_ban_assets/wuyang.png" />
+            <img
+              id="overlay-wuyang"
+              src=""
+              alt="Overlay"
+              style="position: absolute; top: 665px; display: none; z-index: 10"
+            />
+          </div>
+          <div
+            class=""
             onmousedown="event.preventDefault(); toggleOverlay('zenyatta', event.button)"
           >
             <img src="../assets/ow_ban_assets/zenyatta.png" />
@@ -696,7 +708,8 @@
         torbjorn: 0,
         tracer: 0,
         venture: 0,
-        widowmaker: 0,
+          widowmaker: 0,
+          wuyang: 0,
         ana: 0,
         baptiste: 0,
         brigitte: 0,
