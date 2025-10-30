@@ -243,7 +243,7 @@ const escort = [
   "Watchpoint: Gibraltar",
 ];
 
-const flashpoint = ["New Junk City", "Suravasa"];
+const flashpoint = ["New Junk City", "Suravasa", "Atlis"];
 const owmaptypes = [
   "+",
   "Control",
@@ -279,6 +279,7 @@ const valmaps = [
   "Split",
   "Ascent",
   "Sunset",
+  "Corrode",
 ];
 
 const mrmaps = [
@@ -287,12 +288,14 @@ const mrmaps = [
   "Hall of Djalia",
   "Symbiotic Surface",
   "Shin-Shibuya",
+  "Arakko",
   "Midtown",
   "Spider-Islands",
   "Yggdrasill Path",
   "Krakoa",
   "Hell's Heaven",
   "Birnin T'Challa",
+  "Celestial Husk",
   "Royal Palace",
 ];
 
@@ -323,6 +326,7 @@ const valagents = [
   "Iso",
   "Clove",
   "Vyse",
+  "Veto",
 ];
 
 const marvelRivalsHeroes = [
@@ -366,6 +370,9 @@ const marvelRivalsHeroes = [
   "The Thing",
   "Emma Frost",
   "Ultron",
+  "Angela",
+  "Blade",
+  "Daredevil",
 ];
 const marvelRivalsRoles = ["+", "Vanguard", "Duelist", "Strategist", "Flex"];
 valroles = ["+", "Sentinel", "Duelist", "Controller", "Initiator", "Flex"];
