@@ -3145,43 +3145,41 @@ line-height: 1;
   color:white;
   position: absolute;
   top: 45px;
-  right: 119px;
   font-size: 25px;
   font-size: 18px;
   z-index: 2;
   width: 150px;
   height: 77px;
   top: 0px;
-  left: 300px;
-  text-align: center;
+  left: 100px;
+  text-align: left;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
 }
 
 .lol-overlay-name-2{
   color:white;
   position: absolute;
   top: 45px;
-  right: 119px;
   font-size: 25px;
   font-size: 18px;
   z-index: 2;
   width: 150px;
   height: 77px;
   top: 0px;
-  right: 283px;
-  text-align: center;
+  right: 100px;
+  text-align: right;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: right;
 }
 
 
 .lol-overlay-logo1{
   position: absolute;
             top: 9px;
-            left: 204px;
+            left: 10px;
             z-index: 2;
             height: 59px;
             width: 59px;
@@ -3191,7 +3189,7 @@ line-height: 1;
 .lol-overlay-logo2{
   position: absolute;
             top: 9px;
-            left: 1672px;
+            right: 10px;
             z-index: 2;
             height: 59px;
             width: 59px;
@@ -3363,27 +3361,27 @@ line-height: 1;
 
 #s1, #s7{
   top:7px;
-  left:440px;
+  left:360px;
 }
 #s2, #s8{
   top:29px;
-  left:440px;
+  left:360px;
 }
 #s3{
   top:51px;
-  left:440px;
+  left:360px;
 }
 #s4, #s9{
   top:7px;
-  left:1480px;
+  left:1560px;
 }
 #s5, #s10{
   top:29px;
-  left:1480px;
+  left:1560px;
 }
 #s6{
   top:51px;
-  left:1480px;
+  left:1560px;
 }
 
 #mr1{
