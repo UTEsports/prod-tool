@@ -82,6 +82,7 @@
         const roleElements = document.querySelectorAll(
           ".w-auto.bg-gray-700.h-3.rounded-md"
         );
+        const player6Elements = document.querySelectorAll(".player6-field");
         if (localStorage.getItem("game") == "lol") {
           charElements.forEach((selectElement) => {
             selectElement.classList.remove("hidden");
@@ -95,9 +96,24 @@
           mapnameElements.forEach((selectElement) => {
             selectElement.classList.add("hidden");
           });
+          player6Elements.forEach((element) => {
+            element.classList.add("hidden");
+          });
         } else if (localStorage.getItem("game") == "val") {
+          charElements.forEach((selectElement) => {
+            selectElement.classList.remove("hidden");
+          });
+          roleElements.forEach((selectElement) => {
+            selectElement.classList.remove("hidden");
+          });
           maptypeElements.forEach((selectElement) => {
             selectElement.classList.add("hidden");
+          });
+          mapnameElements.forEach((selectElement) => {
+            selectElement.classList.remove("hidden");
+          });
+          player6Elements.forEach((element) => {
+            element.classList.add("hidden");
           });
         } else if (localStorage.getItem("game") == "cs2") {
           charElements.forEach((selectElement) => {
@@ -109,7 +125,13 @@
           maptypeElements.forEach((selectElement) => {
             selectElement.classList.add("hidden");
           });
-        } else {
+          mapnameElements.forEach((selectElement) => {
+            selectElement.classList.remove("hidden");
+          });
+          player6Elements.forEach((element) => {
+            element.classList.add("hidden");
+          });
+        } else if (localStorage.getItem("game") == "ow2") {
           maptypeElements.forEach((selectElement) => {
             selectElement.classList.remove("hidden");
           });
@@ -121,6 +143,41 @@
           });
           roleElements.forEach((selectElement) => {
             selectElement.classList.remove("hidden");
+          });
+          player6Elements.forEach((element) => {
+            element.classList.add("hidden");
+          });
+        } else if (localStorage.getItem("game") == "mr") {
+          charElements.forEach((selectElement) => {
+            selectElement.classList.remove("hidden");
+          });
+          roleElements.forEach((selectElement) => {
+            selectElement.classList.remove("hidden");
+          });
+          maptypeElements.forEach((selectElement) => {
+            selectElement.classList.add("hidden");
+          });
+          mapnameElements.forEach((selectElement) => {
+            selectElement.classList.remove("hidden");
+          });
+          player6Elements.forEach((element) => {
+            element.classList.remove("hidden");
+          });
+        } else {
+          maptypeElements.forEach((selectElement) => {
+            selectElement.classList.add("hidden");
+          });
+          mapnameElements.forEach((selectElement) => {
+            selectElement.classList.remove("hidden");
+          });
+          charElements.forEach((selectElement) => {
+            selectElement.classList.remove("hidden");
+          });
+          roleElements.forEach((selectElement) => {
+            selectElement.classList.remove("hidden");
+          });
+          player6Elements.forEach((element) => {
+            element.classList.add("hidden");
           });
         }
 
@@ -830,7 +887,7 @@
                       class="w-auto bg-gray-700 h-3 rounded-md"
                     ></select>
                   </div>
-                  <div class="flex flex-row items-center">
+                  <div class="flex flex-row items-center player6-field">
                     <input
                       type="text"
                       id="m1-p11-name"
@@ -949,7 +1006,7 @@
                       class="w-auto bg-gray-700 h-3 rounded-md"
                     ></select>
                   </div>
-                  <div class="flex flex-row items-center">
+                  <div class="flex flex-row items-center player6-field">
                     <input
                       type="text"
                       id="m1-p12-name"
@@ -1271,7 +1328,7 @@
                       class="w-auto bg-gray-700 h-3 rounded-md"
                     ></select>
                   </div>
-                  <div class="flex flex-row items-center">
+                  <div class="flex flex-row items-center player6-field">
                     <input
                       type="text"
                       id="m2-p11-name"
@@ -1390,7 +1447,7 @@
                       class="w-auto bg-gray-700 h-3 rounded-md"
                     ></select>
                   </div>
-                  <div class="flex flex-row items-center">
+                  <div class="flex flex-row items-center player6-field">
                     <input
                       type="text"
                       id="m2-p12-name"
@@ -1704,7 +1761,7 @@
                       class="w-auto bg-gray-700 h-3 rounded-md"
                     ></select>
                   </div>
-                  <div class="flex flex-row items-center">
+                  <div class="flex flex-row items-center player6-field">
                     <input
                       type="text"
                       id="m3-p11-name"
@@ -1823,7 +1880,7 @@
                       class="w-auto bg-gray-700 h-3 rounded-md"
                     ></select>
                   </div>
-                  <div class="flex flex-row items-center">
+                  <div class="flex flex-row items-center player6-field">
                     <input
                       type="text"
                       id="m3-p12-name"
@@ -2098,6 +2155,132 @@
 
         // Load all form data on page load
         loadFormDataFromLocalStorage();
+
+        // Function to update field visibility based on game type
+        function updateFieldVisibilityByGame() {
+          const maptypeElements = document.querySelectorAll(
+            ".w-13.bg-gray-800.h-6.rounded-md"
+          );
+          const mapnameElements = document.querySelectorAll(
+            ".w-16.bg-gray-800.h-6.rounded-md"
+          );
+          const charElements = document.querySelectorAll(
+            ".w-auto.bg-gray-800.h-3.rounded-md"
+          );
+          const roleElements = document.querySelectorAll(
+            ".w-auto.bg-gray-700.h-3.rounded-md"
+          );
+          const player6Elements = document.querySelectorAll(".player6-field");
+
+          const game = localStorage.getItem("game");
+
+          if (game === "lol") {
+            // For League of Legends: hide map type and name, show char and role, hide player 6
+            charElements.forEach((selectElement) => {
+              selectElement.classList.remove("hidden");
+            });
+            roleElements.forEach((selectElement) => {
+              selectElement.classList.remove("hidden");
+            });
+            maptypeElements.forEach((selectElement) => {
+              selectElement.classList.add("hidden");
+            });
+            mapnameElements.forEach((selectElement) => {
+              selectElement.classList.add("hidden");
+            });
+            player6Elements.forEach((element) => {
+              element.classList.add("hidden");
+            });
+          } else if (game === "val") {
+            // For Valorant: hide map type and player 6, show map name, char, and role
+            charElements.forEach((selectElement) => {
+              selectElement.classList.remove("hidden");
+            });
+            roleElements.forEach((selectElement) => {
+              selectElement.classList.remove("hidden");
+            });
+            maptypeElements.forEach((selectElement) => {
+              selectElement.classList.add("hidden");
+            });
+            mapnameElements.forEach((selectElement) => {
+              selectElement.classList.remove("hidden");
+            });
+            player6Elements.forEach((element) => {
+              element.classList.add("hidden");
+            });
+          } else if (game === "cs2") {
+            // For CS2: hide char, role, map type, and player 6
+            charElements.forEach((selectElement) => {
+              selectElement.classList.add("hidden");
+            });
+            roleElements.forEach((selectElement) => {
+              selectElement.classList.add("hidden");
+            });
+            maptypeElements.forEach((selectElement) => {
+              selectElement.classList.add("hidden");
+            });
+            mapnameElements.forEach((selectElement) => {
+              selectElement.classList.remove("hidden");
+            });
+            player6Elements.forEach((element) => {
+              element.classList.add("hidden");
+            });
+          } else if (game === "ow2") {
+            // For Overwatch 2: show map type and name, show char and role, hide player 6
+            maptypeElements.forEach((selectElement) => {
+              selectElement.classList.remove("hidden");
+            });
+            mapnameElements.forEach((selectElement) => {
+              selectElement.classList.remove("hidden");
+            });
+            charElements.forEach((selectElement) => {
+              selectElement.classList.remove("hidden");
+            });
+            roleElements.forEach((selectElement) => {
+              selectElement.classList.remove("hidden");
+            });
+            player6Elements.forEach((element) => {
+              element.classList.add("hidden");
+            });
+          } else if (game === "mr") {
+            // For Marvel Rivals: hide map type, show char, role, map name, and player 6
+            charElements.forEach((selectElement) => {
+              selectElement.classList.remove("hidden");
+            });
+            roleElements.forEach((selectElement) => {
+              selectElement.classList.remove("hidden");
+            });
+            maptypeElements.forEach((selectElement) => {
+              selectElement.classList.add("hidden");
+            });
+            mapnameElements.forEach((selectElement) => {
+              selectElement.classList.remove("hidden");
+            });
+            player6Elements.forEach((element) => {
+              element.classList.remove("hidden");
+            });
+          } else {
+            // For other/unknown games: hide map type and player 6 by default, show everything else
+            maptypeElements.forEach((selectElement) => {
+              selectElement.classList.add("hidden");
+            });
+            mapnameElements.forEach((selectElement) => {
+              selectElement.classList.remove("hidden");
+            });
+            charElements.forEach((selectElement) => {
+              selectElement.classList.remove("hidden");
+            });
+            roleElements.forEach((selectElement) => {
+              selectElement.classList.remove("hidden");
+            });
+            player6Elements.forEach((element) => {
+              element.classList.add("hidden");
+            });
+          }
+        }
+
+        // Update field visibility on page load
+        updateFieldVisibilityByGame();
 
         // Function to clear inputs and selects in a given match section
         function clearMatchInputs(matchId) {
