@@ -2109,6 +2109,16 @@
           );
         }
 
+        // Auto-set series format to "ft2" for all matches if not set
+        for (let i = 1; i <= 3; i++) {
+          if (!localStorage.getItem(`match${i}-format`)) {
+            localStorage.setItem(`match${i}-format`, "ft2");
+            console.log(
+              `match${i}-format not found in localStorage — defaulting to ft2`
+            );
+          }
+        }
+
         // Function to load all form data from localStorage
         function loadFormDataFromLocalStorage() {
           // Load all text inputs
