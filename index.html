@@ -751,15 +751,6 @@
                     />
                   </div>
                   <div class="flex flex-row items-center">
-                    <label class="pr-3 w-40 text-right">Info</label>
-                    <input
-                      type="text"
-                      id="m1-team1-info"
-                      class="w-full bg-gray-800 h-6 rounded-md p-1"
-                      placeholder="Team 1 Info"
-                    />
-                  </div>
-                  <div class="flex flex-row items-center">
                     <input
                       type="text"
                       id="m1-p1-name"
@@ -876,15 +867,6 @@
                       id="m1-team2-logo"
                       class="w-full bg-gray-800 h-6 rounded-md p-1"
                       placeholder="Team 2 Logo Link"
-                    />
-                  </div>
-                  <div class="flex flex-row items-center">
-                    <label class="pr-3 w-40 text-right">Info</label>
-                    <input
-                      type="text"
-                      id="m1-team2-info"
-                      class="w-full bg-gray-800 h-6 rounded-md p-1"
-                      placeholder="Team 2 Info"
                     />
                   </div>
                   <div class="flex flex-row items-center">
@@ -1210,15 +1192,6 @@
                     />
                   </div>
                   <div class="flex flex-row items-center">
-                    <label class="pr-3 w-40 text-right">Info</label>
-                    <input
-                      type="text"
-                      id="m2-team1-info"
-                      class="w-full bg-gray-800 h-6 rounded-md p-1"
-                      placeholder="Team 1 Info"
-                    />
-                  </div>
-                  <div class="flex flex-row items-center">
                     <input
                       type="text"
                       id="m2-p1-name"
@@ -1335,15 +1308,6 @@
                       id="m2-team2-logo"
                       class="w-full bg-gray-800 h-6 rounded-md p-1"
                       placeholder="Team 2 Logo Link"
-                    />
-                  </div>
-                  <div class="flex flex-row items-center">
-                    <label class="pr-3 w-40 text-right">Info</label>
-                    <input
-                      type="text"
-                      id="m2-team2-info"
-                      class="w-full bg-gray-800 h-6 rounded-md p-1"
-                      placeholder="Team 2 Info"
                     />
                   </div>
                   <div class="flex flex-row items-center">
@@ -1661,15 +1625,6 @@
                     />
                   </div>
                   <div class="flex flex-row items-center">
-                    <label class="pr-3 w-40 text-right">Info</label>
-                    <input
-                      type="text"
-                      id="m3-team1-info"
-                      class="w-full bg-gray-800 h-6 rounded-md p-1"
-                      placeholder="Team 1 Info"
-                    />
-                  </div>
-                  <div class="flex flex-row items-center">
                     <input
                       type="text"
                       id="m3-p1-name"
@@ -1786,15 +1741,6 @@
                       id="m3-team2-logo"
                       class="w-full bg-gray-800 h-6 rounded-md p-1"
                       placeholder="Team 2 Logo Link"
-                    />
-                  </div>
-                  <div class="flex flex-row items-center">
-                    <label class="pr-3 w-40 text-right">Info</label>
-                    <input
-                      type="text"
-                      id="m3-team2-info"
-                      class="w-full bg-gray-800 h-6 rounded-md p-1"
-                      placeholder="Team 2 Info"
                     />
                   </div>
                   <div class="flex flex-row items-center">
@@ -2092,6 +2038,67 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+        // Auto-set curr-match to "1" if not set
+        if (!localStorage.getItem("curr-match")) {
+          localStorage.setItem("curr-match", "1");
+          console.log("curr-match not found in localStorage — defaulting to 1");
+        }
+
+        // Auto-set match-count to "1" if not set
+        if (!localStorage.getItem("match-count")) {
+          localStorage.setItem("match-count", "1");
+          console.log(
+            "match-count not found in localStorage — defaulting to 1"
+          );
+        }
+
+        // Function to load all form data from localStorage
+        function loadFormDataFromLocalStorage() {
+          // Load all text inputs
+          const textInputs = document.querySelectorAll('input[type="text"]');
+          textInputs.forEach(function (input) {
+            const inputId = input.getAttribute("id");
+            if (inputId && localStorage.getItem(inputId)) {
+              input.value = localStorage.getItem(inputId);
+            }
+          });
+
+          // Load all select elements
+          const selects = document.querySelectorAll("select");
+          selects.forEach(function (select) {
+            const selectId = select.getAttribute("id");
+            if (selectId && localStorage.getItem(selectId)) {
+              select.value = localStorage.getItem(selectId);
+            }
+          });
+
+          // Load all radio buttons
+          const radios = document.querySelectorAll('input[type="radio"]');
+          radios.forEach(function (radio) {
+            const radioName = radio.name;
+            const savedValue = localStorage.getItem(radioName);
+            if (savedValue && radio.value === savedValue) {
+              radio.checked = true;
+            }
+          });
+
+          // Load all checkboxes
+          const checkboxes = document.querySelectorAll(
+            'input[type="checkbox"]'
+          );
+          checkboxes.forEach(function (checkbox) {
+            const checkboxId = checkbox.id;
+            if (checkboxId && localStorage.getItem(checkboxId)) {
+              checkbox.checked = localStorage.getItem(checkboxId) === "true";
+            }
+          });
+
+          console.log("Form data loaded from localStorage");
+        }
+
+        // Load all form data on page load
+        loadFormDataFromLocalStorage();
+
         // Function to clear inputs and selects in a given match section
         function clearMatchInputs(matchId) {
           const inputs = document.querySelectorAll(
