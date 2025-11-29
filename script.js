@@ -523,18 +523,29 @@ document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("DOMContentLoaded", generateSelectOptions);
 
   function swapTeams(match) {
+    console.log(`=== SWAP TEAMS STARTED FOR ${match} ===`);
+
     const team1Name = document.getElementById(`${match}-team1-name`);
     const team2Name = document.getElementById(`${match}-team2-name`);
+    console.log(
+      `Team names before swap: T1="${team1Name?.value}", T2="${team2Name?.value}"`
+    );
     swapValues(team1Name, team2Name);
+    console.log(
+      `Team names after swap: T1="${team1Name?.value}", T2="${team2Name?.value}"`
+    );
 
     const team1Logo = document.getElementById(`${match}-team1-logo`);
     const team2Logo = document.getElementById(`${match}-team2-logo`);
+    console.log(
+      `Team logos before swap: T1="${team1Logo?.value}", T2="${team2Logo?.value}"`
+    );
     swapValues(team1Logo, team2Logo);
+    console.log(
+      `Team logos after swap: T1="${team1Logo?.value}", T2="${team2Logo?.value}"`
+    );
 
-    const team1Info = document.getElementById(`${match}-team1-info`);
-    const team2Info = document.getElementById(`${match}-team2-info`);
-    swapValues(team1Info, team2Info);
-
+    // Swap players and map scores
     for (let i = 1; i <= 5; i++) {
       const player1Index = i; // Team 1 players: player1 to player5
       const player2Index = i + 5; // Team 2 players: player6 to player10
@@ -546,7 +557,13 @@ document.addEventListener("DOMContentLoaded", function () {
       const player2Name = document.getElementById(
         `${match}-p${player2Index}-name`
       );
+      console.log(
+        `Player ${i} names before swap: P${player1Index}="${player1Name?.value}", P${player2Index}="${player2Name?.value}"`
+      );
       swapValues(player1Name, player2Name);
+      console.log(
+        `Player ${i} names after swap: P${player1Index}="${player1Name?.value}", P${player2Index}="${player2Name?.value}"`
+      );
 
       // Swap player roles
       const player1Role = document.getElementById(
@@ -566,18 +583,134 @@ document.addEventListener("DOMContentLoaded", function () {
       );
       swapValues(player1Character, player2Character);
 
-      const team1Input = document.getElementById(`${match}-map${i}-t1`);
-      const team2Input = document.getElementById(`${match}-map${i}-t2`);
-      swapValues(team1Input, team2Input);
+      // Swap map scores
+      const team1MapScore = document.getElementById(`${match}-map${i}-t1`);
+      const team2MapScore = document.getElementById(`${match}-map${i}-t2`);
+      console.log(
+        `Map ${i} scores before swap: T1="${team1MapScore?.value}", T2="${team2MapScore?.value}"`
+      );
+      swapValues(team1MapScore, team2MapScore);
+      console.log(
+        `Map ${i} scores after swap: T1="${team1MapScore?.value}", T2="${team2MapScore?.value}"`
+      );
     }
-    swapValues(
-      document.getElementById("m1-p11-name"),
-      document.getElementById("m1-p12-name")
+
+    // Swap player 6 (only for match 1 in current code, should be dynamic)
+    const p11 = document.getElementById(`${match}-p11-name`);
+    const p12 = document.getElementById(`${match}-p12-name`);
+    console.log(
+      `Player 6 before swap: P11="${p11?.value}", P12="${p12?.value}"`
     );
+    swapValues(p11, p12);
+    console.log(
+      `Player 6 after swap: P11="${p11?.value}", P12="${p12?.value}"`
+    );
+
+    console.log(`=== SWAP TEAMS COMPLETED FOR ${match} ===`);
+
+    // Save to localStorage after swapping
+    saveSwappedDataToLocalStorage(match);
+  }
+
+  // Function to save swapped data to localStorage
+  function saveSwappedDataToLocalStorage(match) {
+    console.log(`=== SAVING SWAPPED DATA TO LOCALSTORAGE FOR ${match} ===`);
+
+    // Save team names
+    const team1Name = document.getElementById(`${match}-team1-name`);
+    const team2Name = document.getElementById(`${match}-team2-name`);
+    if (team1Name) {
+      localStorage.setItem(`${match}-team1-name`, team1Name.value);
+      console.log(`Saved ${match}-team1-name: ${team1Name.value}`);
+    }
+    if (team2Name) {
+      localStorage.setItem(`${match}-team2-name`, team2Name.value);
+      console.log(`Saved ${match}-team2-name: ${team2Name.value}`);
+    }
+
+    // Save team logos
+    const team1Logo = document.getElementById(`${match}-team1-logo`);
+    const team2Logo = document.getElementById(`${match}-team2-logo`);
+    if (team1Logo) localStorage.setItem(`${match}-team1-logo`, team1Logo.value);
+    if (team2Logo) localStorage.setItem(`${match}-team2-logo`, team2Logo.value);
+
+    // Save player data and map scores
+    for (let i = 1; i <= 5; i++) {
+      const player1Index = i;
+      const player2Index = i + 5;
+
+      // Save player names
+      const p1Name = document.getElementById(`${match}-p${player1Index}-name`);
+      const p2Name = document.getElementById(`${match}-p${player2Index}-name`);
+      if (p1Name) {
+        localStorage.setItem(`${match}-p${player1Index}-name`, p1Name.value);
+        console.log(`Saved ${match}-p${player1Index}-name: ${p1Name.value}`);
+      }
+      if (p2Name) {
+        localStorage.setItem(`${match}-p${player2Index}-name`, p2Name.value);
+        console.log(`Saved ${match}-p${player2Index}-name: ${p2Name.value}`);
+      }
+
+      // Save player roles
+      const p1Role = document.getElementById(`${match}-p${player1Index}-role`);
+      const p2Role = document.getElementById(`${match}-p${player2Index}-role`);
+      if (p1Role)
+        localStorage.setItem(`${match}-p${player1Index}-role`, p1Role.value);
+      if (p2Role)
+        localStorage.setItem(`${match}-p${player2Index}-role`, p2Role.value);
+
+      // Save player characters
+      const p1Char = document.getElementById(
+        `${match}-p${player1Index}-character`
+      );
+      const p2Char = document.getElementById(
+        `${match}-p${player2Index}-character`
+      );
+      if (p1Char)
+        localStorage.setItem(
+          `${match}-p${player1Index}-character`,
+          p1Char.value
+        );
+      if (p2Char)
+        localStorage.setItem(
+          `${match}-p${player2Index}-character`,
+          p2Char.value
+        );
+
+      // Save map scores
+      const t1MapScore = document.getElementById(`${match}-map${i}-t1`);
+      const t2MapScore = document.getElementById(`${match}-map${i}-t2`);
+      if (t1MapScore) {
+        localStorage.setItem(`${match}-map${i}-t1`, t1MapScore.value);
+        console.log(`Saved ${match}-map${i}-t1: ${t1MapScore.value}`);
+      }
+      if (t2MapScore) {
+        localStorage.setItem(`${match}-map${i}-t2`, t2MapScore.value);
+        console.log(`Saved ${match}-map${i}-t2: ${t2MapScore.value}`);
+      }
+    }
+
+    // Save player 6 data
+    const p11 = document.getElementById(`${match}-p11-name`);
+    const p12 = document.getElementById(`${match}-p12-name`);
+    if (p11) {
+      localStorage.setItem(`${match}-p11-name`, p11.value);
+      console.log(`Saved ${match}-p11-name: ${p11.value}`);
+    }
+    if (p12) {
+      localStorage.setItem(`${match}-p12-name`, p12.value);
+      console.log(`Saved ${match}-p12-name: ${p12.value}`);
+    }
+
+    console.log(`=== LOCALSTORAGE SAVE COMPLETED FOR ${match} ===`);
   }
 
   // Helper function to swap values between two elements
   function swapValues(element1, element2) {
+    if (!element1 || !element2) {
+      console.warn(`Cannot swap: element1=${element1}, element2=${element2}`);
+      return;
+    }
     const temp = element1.value;
     element1.value = element2.value;
     element2.value = temp;
